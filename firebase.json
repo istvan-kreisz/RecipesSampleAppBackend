@@ -3,6 +3,23 @@
 		"rules": "firestore.rules",
 		"indexes": "firestore.indexes.json"
 	},
+	"emulators": {
+		"auth": {
+			"port": 9100
+		},
+		"functions": {
+			"port": 5001
+		},
+		"database": {
+			"port": 9000
+		},
+		"pubsub": {
+			"port": 9090
+		},
+		"ui": {
+			"enabled": true
+		}
+	},
 	"functions": [
 		{
 			"source": "functions",

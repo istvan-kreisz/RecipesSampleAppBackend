@@ -5,13 +5,12 @@ import { getRecipes as getRecipesDB } from '../database/models/Recipe/getRecipes
 
 const fetchAllRecipes = functionsEU().https.onRequest(async (req, res) => {
 	try {
-		const payload = req.body.data
-
+		// todo: check for auth and if user exists
 		const InputType = type({
 			searchText: string(),
 		})
 
-		const data = create(payload, InputType)
+		const data = create(req.body, InputType)
 
 		const recipes = await getRecipesDB(data.searchText)
 

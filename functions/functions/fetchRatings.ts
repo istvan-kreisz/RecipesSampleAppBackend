@@ -6,13 +6,12 @@ import { getRatings as getRatingsDB } from '../database/models/Rating/getRatings
 
 const fetchRatings = functionsEU().https.onRequest(async (req, res) => {
 	try {
-		const payload = req.body.data
-
+		// todo: check for auth and if user exists
 		const InputType = type({
 			recipe: Recipe,
 		})
 
-		const data = create(payload, InputType)
+		const data = create(req.body, InputType)
 
 		const ratings = await getRatingsDB(data.recipe)
 
