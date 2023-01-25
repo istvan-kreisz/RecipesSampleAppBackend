@@ -15,7 +15,7 @@ const fetchRatings = functionsEU().https.onRequest(async (req, res) => {
 
 		const ratings = await getRatingsDB(data.recipe)
 
-		res.status(400).send({
+		res.status(200).send({
 			ratings: ratings,
 		})
 	} catch (err) {

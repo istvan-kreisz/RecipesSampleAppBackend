@@ -16,7 +16,7 @@ const fetchRecipes = functionsEU().https.onRequest(async (req, res) => {
 
 		const recipes = await getRecipesDB(data.searchText, data.user.id)
 
-		res.status(400).send({ recipes: recipes })
+		res.status(200).send({ recipes: recipes })
 	} catch (err) {
 		handleError(err, res)
 	}

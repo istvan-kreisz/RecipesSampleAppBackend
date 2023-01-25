@@ -15,7 +15,7 @@ const addRecipe = functionsEU().https.onRequest(async (req, res) => {
 
 		await addRecipeDB(data.recipe)
 
-		res.status(400).send()
+		res.status(200).send()
 	} catch (err) {
 		handleError(err, res)
 	}
