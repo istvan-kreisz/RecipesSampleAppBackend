@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"outDir": "lib",
+		"sourceMap": true,
+		"strict": true,
+		"target": "es2017",
+		// "allowJs": true,
+		"noImplicitAny": false,
+		"strictNullChecks": true
+	},
+	"compileOnSave": true,
+	"include": ["types", "index.ts", "types/types.ts"],
+	"exclude": ["./lib/**/*"]
+}
