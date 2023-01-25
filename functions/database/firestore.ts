@@ -234,7 +234,7 @@ const updateDocument = async (
 	path: string[],
 	data: object,
 	transaction?: FirebaseFirestore.Transaction,
-	merge: boolean = true
+	merge = true
 ): Promise<void> => {
 	const ref = docRef(path)
 	const updatedData = {

@@ -15,9 +15,9 @@ const handleError = (err, res: Response) => {
 }
 
 const chunkArray = <T>(array: T[], size: number): T[][] => {
-	let result: T[][] = []
+	const result: T[][] = []
 	for (let i = 0; i < array.length; i += size) {
-		let chunk = array.slice(i, i + size)
+		const chunk = array.slice(i, i + size)
 		result.push(chunk)
 	}
 	return result
