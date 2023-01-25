@@ -35,4 +35,23 @@ const Rating = object({
 
 type Rating = Infer<typeof Rating>
 
-export { Recipe, Rating }
+/////////////////////////
+/////////////////////////
+
+/////////////////////////
+// User
+/////////////////////////
+
+const User = object({
+	id: string(),
+	name: string(),
+	email: string(),
+	dateAdded: number(),
+})
+
+type User = Infer<typeof User>
+
+/////////////////////////
+/////////////////////////
+
+export { Recipe, Rating, User }

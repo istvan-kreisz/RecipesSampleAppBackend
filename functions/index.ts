@@ -1,9 +1,5 @@
-import * as functions from "firebase-functions";
-
-// // Start writing functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+export * from './functions/addRating'
+export * from './functions/addRecipe'
+export * from './functions/fetchAllRecipes'
+export * from './functions/fetchRatings'
+export * from './functions/fetchRecipesByUser'
