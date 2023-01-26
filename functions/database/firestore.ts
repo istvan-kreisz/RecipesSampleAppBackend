@@ -184,8 +184,6 @@ const addDocument = async (
 	const ref = collectionRef(path)
 	const arg = {
 		...data,
-		updated: new Date().getTime(),
-		created: new Date().getTime(),
 	}
 	const newId = ref.doc().id
 	if (transaction) {
@@ -204,8 +202,6 @@ const addDocumentWithId = async (
 	const ref = docRef(path)
 	const arg = {
 		...data,
-		updated: new Date().getTime(),
-		created: new Date().getTime(),
 	}
 
 	if (transaction) {
@@ -222,8 +218,6 @@ const addDocumentsWithIds = async (docs: { path: string[]; data: object }[]): Pr
 		const ref = docRef(doc.path)
 		const data = {
 			...doc.data,
-			updated: new Date().getTime(),
-			created: new Date().getTime(),
 		}
 		batch.set(ref, data)
 	})
@@ -239,7 +233,6 @@ const updateDocument = async (
 	const ref = docRef(path)
 	const updatedData = {
 		...data,
-		updated: new Date().getTime(),
 	}
 
 	const options = { merge: merge }

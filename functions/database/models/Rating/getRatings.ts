@@ -4,7 +4,7 @@ import { getCollection } from '../../firestore'
 import { CollectionRef } from '../../utils'
 
 const getRatings = async (recipe: Recipe): Promise<Rating[]> => {
-	const result = getCollection([
+	const result = await getCollection([
 		CollectionRef.users,
 		recipe.authorId,
 		CollectionRef.recipes,

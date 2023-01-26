@@ -12,6 +12,7 @@
 		"deployf": "export GOOGLE_APPLICATION_CREDENTIALS=./sneakersnshit-2e22f-16428eed97d9.json && firebase deploy --only functions",
 		"logs": "firebase functions:log",
 		"emu": "firebase emulators:start --project recipessampleapp-d5a1f",
+		"debug": "firebase emulators:start --project recipessampleapp-d5a1f --inspect-functions",
 		"get-env": "firebase functions:config:get"
 	},
 	"engines": {

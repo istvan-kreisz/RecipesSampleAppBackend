@@ -1,4 +1,4 @@
-import { object, string, number, array, Infer, boolean } from 'superstruct'
+import { object, string, number, array, Infer, boolean, optional } from 'superstruct'
 
 /////////////////////////
 // Recipe
@@ -7,12 +7,12 @@ import { object, string, number, array, Infer, boolean } from 'superstruct'
 const Recipe = object({
 	id: string(),
 	authorId: string(),
-	imageURL: string(),
+	imageURL: optional(string()),
 	title: string(),
 	ingredients: array(string()),
 	steps: array(string()),
 	isVegetarian: boolean(),
-	source: string(),
+	source: optional(string()),
 	dateAdded: number(),
 })
 
