@@ -1,4 +1,4 @@
-import { firestore } from '../setup'
+import { firestore, functions } from '../setup'
 import { chunkArray, notEmpty } from '../utils/utils'
 
 const docRef = (
@@ -272,7 +272,7 @@ const deleteDocuments = async (paths: string[][]): Promise<void> => {
 		try {
 			await batchDelete(pathsChunk)
 		} catch (err) {
-			console.error(err)
+			functions.logger.error(err)
 		}
 	}
 }

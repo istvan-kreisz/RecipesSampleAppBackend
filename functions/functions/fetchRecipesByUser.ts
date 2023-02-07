@@ -1,12 +1,13 @@
 import { functionsEU } from '../setup'
 import { type, create, string } from 'superstruct'
 import { User } from '../types/types'
-import { handleError } from '../utils/utils'
+import { checkIfAuthenticated, handleError } from '../utils/utils'
 import { getRecipes as getRecipesDB } from '../database/models/Recipe/getRecipes'
 
 const fetchRecipes = functionsEU().https.onRequest(async (req, res) => {
 	try {
-		// todo: check for auth and if user exists
+		await checkIfAuthenticated(req)
+
 		const InputType = type({
 			user: User,
 			searchText: string(),

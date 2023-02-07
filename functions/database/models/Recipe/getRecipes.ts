@@ -12,7 +12,6 @@ const getRecipes = async (searchText: string, authorId?: string): Promise<Recipe
 	if (authorId) {
 		filters.push(['authorId', '==', authorId])
 	}
-	console.log(filters)
 	const result = await getCollectionGroup(CollectionRef.recipes, filters)
 	const recipes = create(
 		result.map((r) => r.data),
