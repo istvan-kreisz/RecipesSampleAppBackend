@@ -2,6 +2,12 @@ import { is, object, string } from 'superstruct'
 import { Response } from 'firebase-functions/v1'
 import { admin, functions } from '../setup'
 
+const getRandomInt = (min: number, max: number): number => {
+	const minBound = Math.ceil(min)
+	const maxBound = Math.floor(max)
+	return Math.floor(Math.random() * (maxBound - minBound + 1)) + minBound
+}
+
 const handleError = (err, res: Response) => {
 	functions.logger.error(err)
 	if (err && is(err, object())) {
@@ -45,4 +51,4 @@ const checkIfAuthenticated = async (req: functions.https.Request, userId?: strin
 	}
 }
 
-export { handleError, chunkArray, notEmpty, checkIfAuthenticated }
+export { getRandomInt, handleError, chunkArray, notEmpty, checkIfAuthenticated }
