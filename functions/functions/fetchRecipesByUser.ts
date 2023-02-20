@@ -4,7 +4,7 @@ import { User } from '../types/types'
 import { checkIfAuthenticated, handleError } from '../utils/utils'
 import { getRecipes as getRecipesDB } from '../database/models/Recipe/getRecipes'
 
-const fetchRecipes = functionsEU()
+const fetchRecipesByUser = functionsEU()
 	.runWith({ memory: '1GB' })
 	.https.onRequest(async (req, res) => {
 		try {
@@ -25,4 +25,4 @@ const fetchRecipes = functionsEU()
 		}
 	})
 
-export { fetchRecipes }
+export { fetchRecipesByUser }
