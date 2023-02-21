@@ -4,7 +4,7 @@ import { addDocumentWithId } from '../../firestore'
 import { CollectionRef } from '../../utils'
 
 const addRating = async (rating: Rating, recipe: Recipe): Promise<void> => {
-	const item = create(recipe, Recipe)
+	const item = create(rating, Rating)
 
 	await addDocumentWithId(
 		[
