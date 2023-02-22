@@ -15,7 +15,12 @@ const fetchUser = functionsEU()
 
 			const data = create(req.body, InputType)
 
-			await checkIfAuthenticated(req, data.userId)
+			try {
+				await checkIfAuthenticated(req, data.userId)
+			} catch {
+				res.sendStatus(401)
+				return
+			}
 
 			let user: User
 			try {
