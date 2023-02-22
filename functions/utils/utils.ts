@@ -10,15 +10,19 @@ const getRandomInt = (min: number, max: number): number => {
 
 const handleError = (err, res: Response) => {
 	functions.logger.error(err)
+	let errorCode = 500
 	if (err && is(err, object())) {
 		const message = err['message']
 		if (message && is(message, string())) {
 			res.statusMessage = message
+			if (message === 'Not Authenticated') {
+				errorCode = 401
+			}
 		}
 	} else if (err && is(err, string())) {
 		res.statusMessage = err
 	}
-	res.status(500).end()
+	res.status(errorCode).end()
 }
 
 const chunkArray = <T>(array: T[], size: number): T[][] => {
@@ -43,7 +47,7 @@ const checkIfAuthenticated = async (req: functions.https.Request, userId?: strin
 		const token = await admin.auth().verifyIdToken(tokenId)
 		if (userId) {
 			if (token.uid !== userId) {
-				throw new functions.https.HttpsError('permission-denied', 'Permission Denied')
+				throw new Error()
 			}
 		}
 	} catch {
