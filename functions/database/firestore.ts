@@ -16,6 +16,9 @@ const collectionRef = (
 const getCollection = async (
 	path: string[],
 	filters?: Array<[string, FirebaseFirestore.WhereFilterOp, any]>,
+	orderBy?: [string, FirebaseFirestore.OrderByDirection | undefined],
+	startAfter?: string[],
+	limit?: number,
 	transaction?: FirebaseFirestore.Transaction
 ): Promise<any[]> => {
 	try {
@@ -29,6 +32,18 @@ const getCollection = async (
 				}
 			}
 		}
+
+		if (orderBy) {
+			ref = ref.orderBy(orderBy[0], orderBy[1])
+		}
+		if (startAfter && startAfter.length) {
+			const doc = await docRef(startAfter).get()
+			ref = ref.startAfter(doc)
+		}
+		if (limit) {
+			ref = ref.limit(limit)
+		}
+
 		let querySnapshot: any
 		if (transaction) {
 			querySnapshot = await transaction.get(ref)
