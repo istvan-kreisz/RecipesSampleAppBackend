@@ -17,7 +17,7 @@ const getRatings = async (
 			CollectionRef.ratings,
 		],
 		[['dateAdded', '>=', 0]],
-		['dateAdded', 'desc'],
+		[['dateAdded', 'asc']],
 		startAfter,
 		limit
 	)

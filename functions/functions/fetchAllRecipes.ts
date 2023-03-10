@@ -7,7 +7,7 @@ const fetchAllRecipes = functionsEU()
 	.runWith({ memory: '1GB' })
 	.https.onRequest(async (req, res) => {
 		try {
-			const itemCountPerPage = 5
+			const itemCountPerPage = 12
 			await checkIfAuthenticated(req)
 
 			const InputType = type({

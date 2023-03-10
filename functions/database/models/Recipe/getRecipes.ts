@@ -17,10 +17,15 @@ const getRecipes = async (
 	if (authorId) {
 		filters.push(['authorId', '==', authorId])
 	}
+	let orderBy: [string, FirebaseFirestore.OrderByDirection | undefined][] = [['dateAdded', 'asc']]
+	if (searchText.length) {
+		orderBy = [['title', 'desc'], ...orderBy]
+	}
+
 	const result = await getCollectionGroup(
 		CollectionRef.recipes,
 		filters,
-		['dateAdded', 'desc'],
+		orderBy,
 		startAfter,
 		limit
 	)

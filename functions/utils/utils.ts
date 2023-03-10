@@ -45,6 +45,7 @@ const checkIfAuthenticated = async (req: functions.https.Request, userId?: strin
 		if (!tokenId) throw new Error()
 
 		const token = await admin.auth().verifyIdToken(tokenId)
+
 		if (userId) {
 			if (token.uid !== userId) {
 				throw new Error()

@@ -8,7 +8,7 @@ const fetchRatings = functionsEU()
 	.runWith({ memory: '1GB' })
 	.https.onRequest(async (req, res) => {
 		try {
-			const itemCountPerPage = 5
+			const itemCountPerPage = 15
 			await checkIfAuthenticated(req)
 
 			const InputType = type({
@@ -21,6 +21,7 @@ const fetchRatings = functionsEU()
 			const ratings = await getRatingsDB(data.recipe, itemCountPerPage, data.startAfter)
 
 			const payload = { data: ratings, isLastPage: ratings.length < itemCountPerPage }
+			console.log(payload)
 
 			res.status(200).send(payload)
 		} catch (err) {

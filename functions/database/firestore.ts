@@ -16,7 +16,7 @@ const collectionRef = (
 const getCollection = async (
 	path: string[],
 	filters?: Array<[string, FirebaseFirestore.WhereFilterOp, any]>,
-	orderBy?: [string, FirebaseFirestore.OrderByDirection | undefined],
+	orderBy?: [string, FirebaseFirestore.OrderByDirection | undefined][],
 	startAfter?: string[],
 	limit?: number,
 	transaction?: FirebaseFirestore.Transaction
@@ -33,8 +33,10 @@ const getCollection = async (
 			}
 		}
 
-		if (orderBy) {
-			ref = ref.orderBy(orderBy[0], orderBy[1])
+		if (orderBy && orderBy.length) {
+			for (const sortOrder of orderBy) {
+				ref = ref.orderBy(sortOrder[0], sortOrder[1])
+			}
 		}
 		if (startAfter && startAfter.length) {
 			const doc = await docRef(startAfter).get()
@@ -113,7 +115,7 @@ const getDocumentIds = async (
 const getCollectionGroup = async (
 	name: string,
 	filters?: Array<[string, FirebaseFirestore.WhereFilterOp, any]>,
-	orderBy?: [string, FirebaseFirestore.OrderByDirection | undefined],
+	orderBy?: [string, FirebaseFirestore.OrderByDirection | undefined][],
 	startAfter?: string[],
 	limit?: number,
 	transaction?: FirebaseFirestore.Transaction,
@@ -129,8 +131,10 @@ const getCollectionGroup = async (
 			}
 		}
 	}
-	if (orderBy) {
-		ref = ref.orderBy(orderBy[0], orderBy[1])
+	if (orderBy && orderBy.length) {
+		for (const sortOrder of orderBy) {
+			ref = ref.orderBy(sortOrder[0], sortOrder[1])
+		}
 	}
 	if (startAfter && startAfter.length) {
 		const doc = await docRef(startAfter).get()
